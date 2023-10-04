@@ -1,1 +1,1 @@
-# matrix-multiplyer
+# matrix-multiplier

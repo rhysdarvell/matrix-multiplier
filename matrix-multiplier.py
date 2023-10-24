@@ -8,7 +8,16 @@ def main():
     matrix2 = [[7, 8, 9],
                [10,11,12]]
     
-    print(matrix1[0][1])
+    print(multiply_cell(0, 1, matrix1, matrix2))
+
+#calculates one cell of the result matrix
+def multiply_cell(x, y, matrix1, matrix2):
+    total = 0
+
+    for i in range(len(matrix2)):
+        total += matrix1[y][i] * matrix2[i][x]
+
+    return total
 
 if __name__ == "__main__":
     main()

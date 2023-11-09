@@ -1,14 +1,36 @@
+import csv
+
 def main():
     print("hello world")
 
-    matrix1 = [[1, 2],
-               [3, 4],
-               [5, 6]]
+    # matrix1 = [[1, 2],
+    #            [3, 4],
+    #            [5, 6]]
+
+    matrix1 = []
+    matrix2 = []
     
-    matrix2 = [[7, 8, 9],
-               [10,11,12]]
+    # matrix2 = [[7, 8, 9],
+    #            [10,11,12]]
     
-    print(multiply_matrix(matrix1, matrix2))
+    with open('matrix1.csv') as matrix1reader:
+        read = csv.reader(matrix1reader, delimiter=',')
+
+        for row in read:
+            matrix1.append(row)
+
+    with open('matrix2.csv') as matrix2reader:
+        read = csv.reader(matrix2reader, delimiter=',')
+
+        for row in read:
+            matrix2.append(row)
+
+    print(matrix1)
+    print(matrix2)
+
+
+    
+    #print(multiply_matrix(matrix1, matrix2))
 
 #calculates one cell of the result matrix
 def multiply_cell(x, y, matrix1, matrix2):

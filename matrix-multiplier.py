@@ -1,5 +1,7 @@
 import csv
 import time
+from multiprocessing import Pool
+from multiprocessing.dummy import Pool as ThreadPool
 
 def main():
     file1 = 'matrix1.csv'
@@ -37,22 +39,34 @@ def main():
     print(end_time - start_time)
 
 #calculates one cell of the result matrix
-def multiply_cell(x, y, matrix1, matrix2):
+def multiply_cell(input):
+    x = input[0]
+    y = input[1]
+    matrix1 = input[2]
+    matrix2 = input[3]
+
     total = 0
 
     for i in range(len(matrix2)):
         total += matrix1[y][i] * matrix2[i][x]
 
-    return total
+    return [x,y,total]
 
 def multiply_matrix(matrix1, matrix2):
+    pool = ThreadPool()
     width = len(matrix2[0])
     height = len(matrix1)
     result = [[0 for i in range(width)] for i in range(height)]
+    input_matrix = []
 
     for i in range(height):
         for j in range(width):
-            result[i][j] = multiply_cell(j, i, matrix1, matrix2)
+            input_matrix.append([j, i, matrix1, matrix2])
+
+    results = pool.map(multiply_cell, input_matrix)
+
+    for row in results:
+        result[row[1]][row[0]] = row[2]
 
     return result
 

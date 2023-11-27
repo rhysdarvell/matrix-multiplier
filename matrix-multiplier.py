@@ -17,13 +17,20 @@ def main():
         read = csv.reader(matrix1reader, delimiter=',')
 
         for row in read:
-            matrix1.append(row)
+            int_row = []
+            for item in row:
+                int_row.append(int(item))
+            matrix1.append(int_row)
 
     with open('matrix2.csv') as matrix2reader:
         read = csv.reader(matrix2reader, delimiter=',')
 
         for row in read:
-            matrix2.append(row)
+            int_row = []
+            for item in row:
+                int_row.append(int(item))
+            matrix2.append(int_row)
+
 
     print(matrix1)
     print(matrix2)

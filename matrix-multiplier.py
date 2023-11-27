@@ -34,9 +34,9 @@ def main():
 
 
     start_time = time.time_ns()
-    print(multiply_matrix(matrix1, matrix2))
+    print(multiply_matrix(matrix1, matrix2, 1))
     end_time = time.time_ns()
-    print(end_time - start_time)
+    print(str((end_time - start_time)/1000000000) + " s")
 
 #calculates one cell of the result matrix
 def multiply_cell(input):
@@ -52,7 +52,7 @@ def multiply_cell(input):
 
     return [x,y,total]
 
-def multiply_matrix(matrix1, matrix2):
+def multiply_matrix(matrix1, matrix2, threads):
     pool = ThreadPool()
     width = len(matrix2[0])
     height = len(matrix1)

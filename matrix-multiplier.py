@@ -1,19 +1,14 @@
 import csv
+import time
 
 def main():
-    print("hello world")
-
-    # matrix1 = [[1, 2],
-    #            [3, 4],
-    #            [5, 6]]
+    file1 = 'matrix1.csv'
+    file2 = 'matrix2.csv'
 
     matrix1 = []
     matrix2 = []
     
-    # matrix2 = [[7, 8, 9],
-    #            [10,11,12]]
-    
-    with open('matrix1.csv') as matrix1reader:
+    with open(file1) as matrix1reader:
         read = csv.reader(matrix1reader, delimiter=',')
 
         for row in read:
@@ -22,7 +17,7 @@ def main():
                 int_row.append(int(item))
             matrix1.append(int_row)
 
-    with open('matrix2.csv') as matrix2reader:
+    with open(file2) as matrix2reader:
         read = csv.reader(matrix2reader, delimiter=',')
 
         for row in read:
@@ -32,12 +27,14 @@ def main():
             matrix2.append(int_row)
 
 
-    print(matrix1)
-    print(matrix2)
+    # print(matrix1)
+    # print(matrix2)
 
 
-    
-    #print(multiply_matrix(matrix1, matrix2))
+    start_time = time.time_ns()
+    print(multiply_matrix(matrix1, matrix2))
+    end_time = time.time_ns()
+    print(end_time - start_time)
 
 #calculates one cell of the result matrix
 def multiply_cell(x, y, matrix1, matrix2):
